@@ -1,24 +1,24 @@
-const { User, Thought } = require('../models');
-const { signToken, AuthenticationError } = require('../utils/auth');
+const { User, Book } = require("../models");
+const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('thoughts');
+      return User.find().populate("books");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('thoughts');
+      return User.findOne({ username }).populate("books");
     },
-    thoughts: async (parent, { username }) => {
+    books: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Thought.find(params).sort({ createdAt: -1 });
+      return Book.find(params).sort({ createdAt: -1 });
     },
-    thought: async (parent, { thoughtId }) => {
-      return Thought.findOne({ _id: thoughtId });
+    book: async (parent, { bookId }) => {
+      return Book.findOne({ _id: bookId });
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('thoughts');
+        return User.findOne({ _id: context.user._id }).populate("books");
       }
       throw AuthenticationError;
     },
@@ -47,30 +47,30 @@ const resolvers = {
 
       return { token, user };
     },
-    addThought: async (parent, { thoughtText }, context) => {
+    addBook: async (parent, { BookText }, context) => {
       if (context.user) {
-        const thought = await Thought.create({
-          thoughtText,
-          thoughtAuthor: context.user.username,
+        const book = await Book.create({
+          BookText,
+          BookAuthor: context.user.username,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { thoughts: thought._id } }
+          { $addToSet: { books: book._id } }
         );
 
-        return thought;
+        return book;
       }
       throw AuthenticationError;
-      ('You need to be logged in!');
+      ("You need to be logged in!");
     },
-    addComment: async (parent, { thoughtId, commentText }, context) => {
+    addReview: async (parent, { bookId, reviewText }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
+        return Book.findOneAndUpdate(
+          { _id: bookId },
           {
             $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
+              reviews: { reviewText, reviewsAuthor: context.user.username },
             },
           },
           {
@@ -81,31 +81,31 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    removeThought: async (parent, { thoughtId }, context) => {
+    removeBook: async (parent, { bookId }, context) => {
       if (context.user) {
-        const thought = await Thought.findOneAndDelete({
-          _id: thoughtId,
-          thoughtAuthor: context.user.username,
+        const book = await Book.findOneAndDelete({
+          _id: bookId,
+          BookAuthor: context.user.username,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { thoughts: thought._id } }
+          { $pull: { books: book._id } }
         );
 
-        return thought;
+        return book;
       }
       throw AuthenticationError;
     },
-    removeComment: async (parent, { thoughtId, commentId }, context) => {
+    removeReview: async (parent, { bookId, reviewId }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
+        return Book.findOneAndUpdate(
+          { _id: bookId },
           {
             $pull: {
-              comments: {
-                _id: commentId,
-                commentAuthor: context.user.username,
+              reviews: {
+                _id: reviewId,
+                reviewsAuthor: context.user.username,
               },
             },
           },
