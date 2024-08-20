@@ -70,10 +70,9 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-primary"
+                  className="btn w-64 rounded-full"
                   style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
+                  type="submit">
                   Submit
                 </button>
               </form>
