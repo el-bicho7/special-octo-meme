@@ -9,8 +9,8 @@ const typeDefs = `
 
   type Book {
     _id: ID
-    thoughtText: String
-    thoughtAuthor: String
+    bookTitle: String
+    bookAuthor: String
     createdAt: String
     reviews: [Review]!
   }
@@ -20,6 +20,7 @@ const typeDefs = `
     reviewText: String
     reviewAuthor: String
     createdAt: String
+    reviewRating: Float
   }
 
   type Auth {
