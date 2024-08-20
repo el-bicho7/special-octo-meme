@@ -19,6 +19,10 @@ const bookSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
+  addedBy: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
   reviews: [
     {
       reviewText: {
@@ -28,8 +32,12 @@ const bookSchema = new Schema({
         maxlength: 280,
       },
       reviewAuthor: {
-        type: String,
-        required: true,
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+      reviewRating: {
+        type: Number,
+        require: true,
       },
       createdAt: {
         type: Date,

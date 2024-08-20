@@ -70,7 +70,11 @@ const resolvers = {
           { _id: bookId },
           {
             $addToSet: {
-              reviews: { reviewText, reviewsAuthor: context.user.username },
+              reviews: {
+                reviewText,
+                reviewsAuthor,
+                reviewRating: context.user.username,
+              },
             },
           },
           {
