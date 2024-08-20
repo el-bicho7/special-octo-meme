@@ -1,39 +1,33 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
 
-import { ADD_THOUGHT } from '../../utils/mutations';
-import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
+import { ADD_BOOK } from "../../utils/mutations";
+import { QUERY_BOOKS, QUERY_ME } from "../../utils/queries";
 
-import Auth from '../../utils/auth';
+import Auth from "../../utils/auth";
 
-const ThoughtForm = () => {
-  const [thoughtText, setThoughtText] = useState('');
+const BookForm = () => {
+  const [bookText, setBookText] = useState("");
 
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addThought, { error }] = useMutation
-  (ADD_THOUGHT, {
-    refetchQueries: [
-      QUERY_THOUGHTS,
-      'getThoughts',
-      QUERY_ME,
-      'me'
-    ]
+  const [addBook, { error }] = useMutation(ADD_BOOK, {
+    refetchQueries: [QUERY_BOOKS, "getBooks", QUERY_ME, "me"],
   });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { data } = await addThought({
+      const { data } = await addBook({
         variables: {
-          thoughtText,
-          thoughtAuthor: Auth.getProfile().data.username,
+          bookText,
+          bookAuthor: Auth.getProfile().data.username,
         },
       });
 
-      setThoughtText('');
+      setBookText("");
     } catch (err) {
       console.error(err);
     }
@@ -42,8 +36,8 @@ const ThoughtForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'thoughtText' && value.length <= 280) {
-      setThoughtText(value);
+    if (name === "bookText" && value.length <= 280) {
+      setBookText(value);
       setCharacterCount(value.length);
     }
   };
@@ -56,7 +50,7 @@ const ThoughtForm = () => {
         <>
           <p
             className={`m-0 ${
-              characterCount === 280 || error ? 'text-danger' : ''
+              characterCount === 280 || error ? "text-danger" : ""
             }`}
           >
             Character Count: {characterCount}/280
@@ -67,18 +61,18 @@ const ThoughtForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="thoughtText"
-                placeholder="Here's a new thought..."
-                value={thoughtText}
+                name="bookText"
+                placeholder="Here's a new book..."
+                value={bookText}
                 className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
+                style={{ lineHeight: "1.5", resize: "vertical" }}
                 onChange={handleChange}
               ></textarea>
             </div>
 
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Thought
+                Add Book
               </button>
             </div>
             {error && (
@@ -90,7 +84,7 @@ const ThoughtForm = () => {
         </>
       ) : (
         <p>
-          You need to be logged in to share your thoughts. Please{' '}
+          You need to be logged in to share your books. Please{" "}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
@@ -98,4 +92,4 @@ const ThoughtForm = () => {
   );
 };
 
-export default ThoughtForm;
+export default BookForm;

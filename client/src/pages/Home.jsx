@@ -1,13 +1,13 @@
 import { useQuery } from "@apollo/client";
 
-import ThoughtList from "../components/BookList";
-import ThoughtForm from "../components/BookForm";
+import BookList from "../components/BookList";
+import BookForm from "../components/BookForm";
 
-import { QUERY_THOUGHTS } from "../utils/queries";
+import { QUERY_BOOKS } from "../utils/queries";
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
-  const thoughts = data?.thoughts || [];
+  const { loading, data } = useQuery(QUERY_BOOKS);
+  const books = data?.books || [];
 
   return (
     // Home Page must show best 3 ranked books
@@ -18,16 +18,13 @@ const Home = () => {
           className="col-12 col-md-10 mb-3 p-3"
           style={{ border: "1px dotted #1a1a1a" }}
         >
-          <ThoughtForm />
+          <BookForm />
         </div>
         <div className="col-12 col-md-8 mb-3">
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ThoughtList
-              thoughts={thoughts}
-              title="Some Feed for Thought(s)..."
-            />
+            <BookList books={books} title="Some Feed for Book(s)..." />
           )}
         </div>
       </div>
