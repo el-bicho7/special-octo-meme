@@ -47,11 +47,12 @@ const resolvers = {
 
       return { token, user };
     },
-    addBook: async (parent, { BookText }, context) => {
+    addBook: async (parent, { BookTitle, BookAuthor }, context) => {
       if (context.user) {
         const book = await Book.create({
-          BookText,
-          BookAuthor: context.user.username,
+          BookTitle,
+          BookAuthor,
+          addedBy: context.user.username,
         });
 
         await User.findOneAndUpdate(
@@ -89,7 +90,7 @@ const resolvers = {
       if (context.user) {
         const book = await Book.findOneAndDelete({
           _id: bookId,
-          BookAuthor: context.user.username,
+          addedBy: context.user.username,
         });
 
         await User.findOneAndUpdate(

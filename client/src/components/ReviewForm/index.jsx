@@ -8,6 +8,7 @@ import Auth from "../../utils/auth";
 
 const ReviewForm = ({ bookId }) => {
   const [reviewText, setReviewText] = useState("");
+  const [reviewRating, setReviewRating] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addReview, { error }] = useMutation(ADD_REVIEW);

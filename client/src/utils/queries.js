@@ -19,9 +19,10 @@ export const QUERY_BOOKS = gql`
   query getBooks {
     books {
       _id
-      bookText
+      bookTitle
       bookAuthor
       createdAt
+      addedBy
       reviews {
         reviewRating
       }
