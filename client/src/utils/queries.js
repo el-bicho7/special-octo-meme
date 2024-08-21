@@ -52,9 +52,7 @@ export const QUERY_ME = gql`
       books {
         _id
         bookTitle
-        bookAuthor
         createdAt
-        addedBy
       }
     }
   }
