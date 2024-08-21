@@ -8,11 +8,11 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
+    <header className="text-light mb-4 py-3 flex-row align-center bg-error-content">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
           <Link className="text-light" to="/">
-            <h1 className="m-0">Whitebeard Library</h1>
+            <h1 className="m-0 ">Whitebeard Library</h1>
           </Link>
           <p className="m-0"></p>
         </div>
