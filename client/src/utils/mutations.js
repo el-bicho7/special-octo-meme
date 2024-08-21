@@ -25,16 +25,12 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_BOOK = gql`
-  mutation addBook($bookText: String!) {
-    addBook(bookText: $bookText) {
+  mutation addBook($bookTitle: String!, $bookAuthor: String!) {
+    addBook(bookTitle: $bookTitle, bookAuthor: $bookAuthor) {
       _id
-      bookText
+      bookTitle
       bookAuthor
       createdAt
-      reviews {
-        _id
-        reviewText
-      }
     }
   }
 `;
@@ -49,6 +45,7 @@ export const ADD_REVIEW = gql`
       reviews {
         _id
         reviewText
+        reviewRating
         createdAt
       }
     }
