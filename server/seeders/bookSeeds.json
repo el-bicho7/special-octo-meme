@@ -1,58 +1,42 @@
 [
   {
-    "bookTitle": "Book 1",
-    "bookText": "Everyone knows that debugging is twice as hard as writing a program in the first place. So if you're as clever as you can be when you write it, how will you ever debug it?",
-    "bookAuthor": "Brian Kernighan",
+    "bookTitle": "The Wedding People",
+    "bookAuthor": "Alison Espach",
     "reviews": [
       {
-        "reviewText": "It's a good book.",
+        "reviewText": "Enjoyed the characters and the messages in this story. Easy read. Very entertaining. Almost predictable. Recommend for a summer read",
+        "reviewRating": 4
+      }
+    ]
+  },
+  {
+    "bookTitle": "Bringing Ben Home",
+    "bookAuthor": " Barbara Bradley Hagerty",
+    "reviews": [
+      {
+        "reviewText": "So well written. You will be invested every step of the way!",
         "reviewRating": 5
       }
     ]
   },
   {
-    "bookTitle": "Book 2",
-    "bookText": "Some of the best programming is done on paper, really. Putting it into the computer is just a minor detail.",
-    "bookAuthor": "Max Kanat-Alexander"
+    "bookTitle": "There Are Rivers in the Sky",
+    "bookAuthor": "Elif Shafak",
+    "reviews": [
+      {
+        "reviewText": "I am delighted to have this book I love her work",
+        "reviewRating": 4
+      }
+    ]
   },
   {
-    "bookTitle": "Book 3",
-    "bookText": "When you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. So create.",
-    "bookAuthor": "Why The Lucky Stiff"
-  },
-  {
-    "bookTitle": "Book 4",
-    "bookText": "I'm not a great programmer; I'm just a good programmer with great habits.",
-    "bookAuthor": "Kent Beck"
-  },
-  {
-    "bookTitle": "Book 5",
-    "bookText": "Walking on water and developing software from a specification are easy if both are frozen.",
-    "bookAuthor": "Edward V. Berard"
-  },
-  {
-    "bookTitle": "Book 6",
-    "bookText": "The most disastrous thing that you can ever learn is your first programming language.",
-    "bookAuthor": "Alan Kay"
-  },
-  {
-    "bookTitle": "Book 7",
-    "bookText": "The most important property of a program is whether it accomplishes the intention of its user.",
-    "bookAuthor": "C.A.R. Hoare"
-  },
-  {
-    "bookTitle": "Book 8",
-    "bookText": "Delivering good software today is often better than perfect software tomorrow, so finish things and ship.",
-    "bookAuthor": "David Thomas"
-  },
-  {
-    "bookTitle": "Book 9",
-    "bookText": "If you optimize everything, you will always be unhappy.",
-    "bookAuthor": "Donald Knuth"
-  },
-  {
-    "bookTitle": "Book 10",
-    "bookText": "It's not a bug; it's an undocumented feature.",
-    "bookAuthor": "Lernantino"
+    "bookTitle": "House of Glass",
+    "bookAuthor": "Sarah Pekkanen",
+    "reviews": [
+      {
+        "reviewText": "On the outside they were the golden family with the perfect life. On the inside they built the perfect lie",
+        "reviewRating": 5
+      }
+    ]
   }
 ]
