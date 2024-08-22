@@ -8,8 +8,9 @@ import { QUERY_BOOKS, QUERY_ME } from "../../utils/queries";
 import Auth from "../../utils/auth";
 
 const BookForm = () => {
-  const [bookText, setBookText] = useState("");
-
+  // const [bookText, setBookText] = useState(""); 
+  const [bookTitle, setBookTitle] = useState("");
+  const [bookAuthor, setBookAuthor] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addBook, { error }] = useMutation(ADD_BOOK, {
@@ -18,16 +19,18 @@ const BookForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    // console.log('Hello handleformsubmit');
     try {
       const { data } = await addBook({
         variables: {
-          bookText,
-          bookAuthor: Auth.getProfile().data.username,
+          bookTitle,
+          bookAuthor,
+          addedBy: Auth.getProfile().data._id
         },
       });
 
-      setBookText("");
+      setBookTitle("");
+      setBookAuthor("");
     } catch (err) {
       console.error(err);
     }
@@ -36,15 +39,17 @@ const BookForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === "bookText" && value.length <= 280) {
-      setBookText(value);
+    if (name === "bookTitle" && value.length <= 280) {
+      setBookTitle(value);
       setCharacterCount(value.length);
+    } else if (name === "bookAuthor") {
+              setBookAuthor(value);
     }
   };
 
   return (
     <div>
-      <h3>What's on your techy mind?</h3>
+      <h3>What book did you just read?</h3>
 
       {Auth.loggedIn() ? (
         <>
@@ -61,13 +66,22 @@ const BookForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="bookText"
-                placeholder="Here's a new book..."
-                value={bookText}
+                name="bookTitle"
+                placeholder="Book title"
+                value={bookTitle}
                 className="form-input w-100"
                 style={{ lineHeight: "1.5", resize: "vertical" }}
                 onChange={handleChange}
               ></textarea>
+              <input
+                type="text"
+                name="bookAuthor"
+                value={bookAuthor}
+                className="form-input w-100"
+                style={{ lineHeight: "1.5", resize: "vertical" }}
+                placeholder="Author name"
+                onChange={handleChange}
+              />
             </div>
 
             <div className="col-12 col-lg-3">

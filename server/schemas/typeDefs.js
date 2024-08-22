@@ -12,6 +12,7 @@ const typeDefs = `
     bookTitle: String
     bookAuthor: String
     createdAt: String
+    addedBy: ID!
     reviews: [Review]!
   }
 
@@ -39,7 +40,7 @@ const typeDefs = `
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addBook(bookTitle: String!, bookAuthor: String!): Book
+    addBook(bookTitle: String!, bookAuthor: String!, addedBy:ID!): Book
     addReview(bookID: ID!, reviewText: String!): Book
     removeBook(bookId: ID!): Book
     removeReview(bookId: ID!, reviewId: ID!): Book

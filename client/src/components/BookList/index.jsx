@@ -31,7 +31,7 @@ const BookList = ({ books, title, showTitle = true, showUsername = true }) => {
               )}
             </h4>
             <div className="card-body bg-light p-2">
-              <p>{book.bookText}</p>
+              <p>{book.bookTitle}</p>
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"
