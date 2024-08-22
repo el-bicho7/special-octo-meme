@@ -52,7 +52,6 @@ const resolvers = {
         const book = await Book.create({
           BookTitle,
           BookAuthor,
-          addedBy: context.user.username,
         });
 
         await User.findOneAndUpdate(
@@ -73,8 +72,8 @@ const resolvers = {
             $addToSet: {
               reviews: {
                 reviewText,
-                reviewsAuthor,
-                reviewRating: context.user.username,
+                reviewRating,
+                reviewsAuthor: context.user.username,
               },
             },
           },
@@ -90,7 +89,6 @@ const resolvers = {
       if (context.user) {
         const book = await Book.findOneAndDelete({
           _id: bookId,
-          addedBy: context.user.username,
         });
 
         await User.findOneAndUpdate(
