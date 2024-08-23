@@ -27,22 +27,22 @@ const resolvers = {
         return await Book.aggregate([
           {
             $lookup: {
-              from: 'users',
-              localField: 'addedBy',
-              foreignField: '_id',
-              as: 'userInfo'
-            }
+              from: "users",
+              localField: "addedBy",
+              foreignField: "_id",
+              as: "userInfo",
+            },
           },
           {
             $unwind: {
-              path: '$userInfo',
-              preserveNullAndEmptyArrays: true // Opcional: Si no quieres eliminar documentos sin usuario
-            }
-          }
+              path: "$userInfo",
+              preserveNullAndEmptyArrays: false, // Opcional: Si no quieres eliminar documentos sin usuario
+            },
+          },
         ]).exec();
       } catch (error) {
-        console.error('Error fetching books with user info:', error);
-        throw new Error('Failed to fetch books with user info');
+        console.error("Error fetching books with user info:", error);
+        throw new Error("Failed to fetch books with user info");
       }
     },
   },
@@ -73,28 +73,32 @@ const resolvers = {
 
     addBook: async (parent, { bookTitle, bookAuthor, addedBy }, context) => {
       // console.log('hello resolver');
-      if (context.user) {     
+      if (context.user) {
         try {
-            const book = await Book.create({
-              bookTitle,
-              bookAuthor,
-              addedBy
-            });
-            await User.findOneAndUpdate(
-              { _id: context.user._id },
-              { $addToSet: { books: book._id } }
-            );
-            return book;
-            } catch(error) {
-              console.error('Error creating book',error);
-              throw new Error('Error creating book: ' + error.message);
-            }
+          const book = await Book.create({
+            bookTitle,
+            bookAuthor,
+            addedBy,
+          });
+          await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: { books: book._id } }
+          );
+          return book;
+        } catch (error) {
+          console.error("Error creating book", error);
+          throw new Error("Error creating book: " + error.message);
+        }
       }
-      throw new AuthenticationError;
+      throw new AuthenticationError();
       ("You need to be logged in!");
     },
-    
-    addReview: async (parent, { bookId, reviewText }, context) => {
+
+    addReview: async (
+      parent,
+      { bookId, reviewText, reviewRating, reviewAuthor },
+      context
+    ) => {
       if (context.user) {
         return Book.findOneAndUpdate(
           { _id: bookId },
@@ -103,7 +107,7 @@ const resolvers = {
               reviews: {
                 reviewText,
                 reviewRating,
-                reviewsAuthor: context.user.username,
+                reviewAuthor,
               },
             },
           },
