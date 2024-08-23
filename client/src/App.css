@@ -902,9 +902,9 @@ a:hover {
   color: #aeaeae !important;
 }
 
-.text-light {
+/* .text-light {
   color: oklch(var(--pc));
-}
+} */
 
 .text-dark {
   color: #1a1a1a !important;
