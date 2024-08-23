@@ -47,23 +47,30 @@ const resolvers = {
 
       return { token, user };
     },
-    addBook: async (parent, { BookTitle, BookAuthor }, context) => {
-      if (context.user) {
-        const book = await Book.create({
-          BookTitle,
-          BookAuthor,
-        });
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { books: book._id } }
-        );
-
-        return book;
+    addBook: async (parent, { bookTitle, bookAuthor, addedBy }, context) => {
+      // console.log('hello resolver');
+      if (context.user) {     
+        try {
+            const book = await Book.create({
+              bookTitle,
+              bookAuthor,
+              addedBy
+            });
+            await User.findOneAndUpdate(
+              { _id: context.user._id },
+              { $addToSet: { books: book._id } }
+            );
+            return book;
+            } catch(error) {
+              console.error('Error creating book',error);
+              throw new Error('Error creating book: ' + error.message);
+            }
       }
-      throw AuthenticationError;
+      throw new AuthenticationError;
       ("You need to be logged in!");
     },
+    
     addReview: async (parent, { bookId, reviewText }, context) => {
       if (context.user) {
         return Book.findOneAndUpdate(

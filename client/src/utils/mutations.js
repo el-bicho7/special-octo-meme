@@ -25,12 +25,13 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_BOOK = gql`
-  mutation addBook($bookTitle: String!, $bookAuthor: String!) {
-    addBook(bookTitle: $bookTitle, bookAuthor: $bookAuthor) {
-      _id
+  mutation addBook($bookTitle: String!, $bookAuthor: String!, $addedBy: ID!) {
+    addBook(bookTitle: $bookTitle, bookAuthor: $bookAuthor, addedBy: $addedBy) {
       bookTitle
       bookAuthor
-      createdAt
+      createdAt 
+      addedBy
+    
     }
   }
 `;
