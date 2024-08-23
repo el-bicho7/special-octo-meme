@@ -21,7 +21,8 @@ const ReviewForm = ({ bookId }) => {
         variables: {
           bookId,
           reviewText,
-          commentAuthor: Auth.getProfile().data.username,
+          reviewRating: reviewRating,
+          reviewAuthor: Auth.getProfile().data.username,
         },
       });
 
@@ -40,9 +41,18 @@ const ReviewForm = ({ bookId }) => {
     }
   };
 
+  const handleRating = (event) => {
+    const { name, value } = event.target;
+    console.log("Review Rating:", value);
+
+    if (name === "reviewRating") {
+      setReviewRating(parseInt(value));
+    }
+  };
+
   return (
     <div>
-      <h4>What are your books on this thought?</h4>
+      <h4>What are your reviews on this book?</h4>
 
       {Auth.loggedIn() ? (
         <>
@@ -67,6 +77,22 @@ const ReviewForm = ({ bookId }) => {
                 style={{ lineHeight: "1.5", resize: "vertical" }}
                 onChange={handleChange}
               ></textarea>
+            </div>
+
+            <div className="col-12 col-lg-9">
+              <p>Rating: </p>
+              <select
+                name="reviewRating"
+                className="select select-primary w-full max-w-xs"
+                value={reviewRating}
+                onChange={handleRating}
+              >
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+              </select>
             </div>
 
             <div className="col-12 col-lg-3">

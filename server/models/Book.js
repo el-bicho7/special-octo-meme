@@ -19,10 +19,10 @@ const bookSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
-   addedBy: {
-     type: Schema.Types.ObjectId,
-     ref: "User",
-   },
+  addedBy: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
   reviews: [
     {
       reviewText: {
