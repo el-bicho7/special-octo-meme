@@ -13,32 +13,28 @@ const BookList = ({ books, title, showTitle = true, showUsername = true }) => {
           <div key={book._id} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showUsername ? (
-                <Link
-                  className="text-light"
-                  to={`/profiles/${book.bookAuthor}`}
-                >
+                <Link className="text-light" to={`/books/${book._id}`}>
                   {book.bookAuthor} <br />
                   <span style={{ fontSize: "1rem" }}>
                     had this book on {book.createdAt}
                   </span>
+                  <div className="card-body bg-light p-2">
+                    <p>{book.bookTitle}</p>
+                  </div>
                 </Link>
               ) : (
                 <>
-                  <span style={{ fontSize: "1rem" }}>
-                    You had this book on {book.createdAt}
-                  </span>
+                  <Link className="text-light" to={`/books/${book._id}`}>
+                    <span style={{ fontSize: "1rem" }}>
+                      You had this book on {book.createdAt}
+                    </span>
+                    <div className="card-body bg-light p-2">
+                      <p>{book.bookTitle}</p>
+                    </div>
+                  </Link>
                 </>
               )}
             </h4>
-            <div className="card-body bg-light p-2">
-              <p>{book.bookTitle}</p>
-            </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/books/${book._id}`}
-            >
-              Join the discussion on this book.
-            </Link>
           </div>
         ))}
     </div>

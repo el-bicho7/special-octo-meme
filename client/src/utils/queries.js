@@ -30,9 +30,10 @@ export const QUERY_SINGLE_BOOK = gql`
   query getSingleBook($bookId: ID!) {
     book(bookId: $bookId) {
       _id
-      bookText
+      bookTitle
       bookAuthor
       createdAt
+      addedBy
       reviews {
         _id
         reviewText
