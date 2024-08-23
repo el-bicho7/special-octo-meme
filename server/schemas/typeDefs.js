@@ -13,6 +13,7 @@ const typeDefs = `
     bookAuthor: String
     createdAt: String
     addedBy: ID!
+    userInfo: User
     reviews: [Review]!
   }
 
@@ -35,6 +36,7 @@ const typeDefs = `
     books(username: String): [Book]
     book(bookId: ID!): Book
     me: User
+    booksWithUser: [Book]
   }
 
   type Mutation {

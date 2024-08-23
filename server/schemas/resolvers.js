@@ -22,6 +22,29 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    booksWithUser: async () => {
+      try {
+        return await Book.aggregate([
+          {
+            $lookup: {
+              from: 'users',
+              localField: 'addedBy',
+              foreignField: '_id',
+              as: 'userInfo'
+            }
+          },
+          {
+            $unwind: {
+              path: '$userInfo',
+              preserveNullAndEmptyArrays: true // Opcional: Si no quieres eliminar documentos sin usuario
+            }
+          }
+        ]).exec();
+      } catch (error) {
+        console.error('Error fetching books with user info:', error);
+        throw new Error('Failed to fetch books with user info');
+      }
+    },
   },
 
   Mutation: {
