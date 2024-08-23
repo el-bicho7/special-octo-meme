@@ -14,23 +14,29 @@ const BookList = ({ books, title, showTitle = true, showUsername = true }) => {
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showUsername ? (
                 <Link className="text-light" to={`/books/${book._id}`}>
-                  {book.bookAuthor} <br />
+                  {book.bookTitle} <br />    
                   <span style={{ fontSize: "1rem" }}>
-                    had this book on {book.createdAt}
+                    Author
                   </span>
                   <div className="card-body bg-light p-2">
-                    <p>{book.bookTitle}</p>
+                    <p>{book.bookAuthor}</p>
+                  </div>
+                  <span style={{ fontSize: "1rem" }}>
+                    Book added by
+                  </span>
+                  <div className="card-body bg-light p-2">
+                    <p>{book.userInfo.username}</p>
                   </div>
                 </Link>
               ) : (
                 <>
                   <Link className="text-light" to={`/books/${book._id}`}>
-                    <span style={{ fontSize: "1rem" }}>
-                      You had this book on {book.createdAt}
-                    </span>
                     <div className="card-body bg-light p-2">
                       <p>{book.bookTitle}</p>
                     </div>
+                    <span style={{ fontSize: "1rem" }}>
+                      Added on {book.createdAt}
+                    </span>
                   </Link>
                 </>
               )}

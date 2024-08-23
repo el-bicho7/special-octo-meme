@@ -22,6 +22,7 @@ export const QUERY_BOOKS = gql`
       bookTitle
       bookAuthor
       createdAt
+      addedBy
     }
   }
 `;
@@ -30,10 +31,9 @@ export const QUERY_SINGLE_BOOK = gql`
   query getSingleBook($bookId: ID!) {
     book(bookId: $bookId) {
       _id
-      bookTitle
+      bookText
       bookAuthor
       createdAt
-      addedBy
       reviews {
         _id
         reviewText
@@ -58,3 +58,18 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_BOOKS_USER = gql`
+  query BooksWithUser {
+    booksWithUser {
+      _id
+      bookTitle
+      bookAuthor
+      createdAt
+      userInfo {
+        username
+    }
+  }
+}
+`;
+

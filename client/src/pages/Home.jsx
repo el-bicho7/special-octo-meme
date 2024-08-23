@@ -3,15 +3,16 @@ import { useQuery } from "@apollo/client";
 import BookList from "../components/BookList";
 import BookForm from "../components/BookForm";
 
-import { QUERY_BOOKS } from "../utils/queries";
+// import { QUERY_BOOKS } from "../utils/queries";
+import { QUERY_BOOKS_USER } from "../utils/queries";
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_BOOKS);
-  const books = data?.books || [];
+  const { loading, data } = useQuery(QUERY_BOOKS_USER);
+  const books = data?.booksWithUser || [];
+  // console.log('books',books);
 
   return (
     // Home Page must show best 3 ranked books
-
     <main>
       <div className="flex-row justify-center">
         <div
@@ -24,7 +25,7 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <BookList books={books} title="Some Feed for Book(s)..." />
+            <BookList books={books} title="Book(s) at library..." />
           )}
         </div>
       </div>
