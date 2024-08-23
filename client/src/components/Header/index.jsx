@@ -11,9 +11,12 @@ const Header = () => {
     <header className="text-light mb-4 py-3 flex-row align-center bg-error-content">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
-          <Link className="text-light" to="/">
-            <h1 className="m-0 ">Whitebeard Library</h1>
+        <h1 className="m-0">
+          <Link className="text-light flex items-center" to="/">
+            <img className="rounded-lg mr-2" alt="logo" width="65" height="70" src="/logo.png"/>
+           Whitebeard Library
           </Link>
+          </h1>
           <p className="m-0"></p>
         </div>
         <div>
