@@ -47,6 +47,7 @@ const resolvers = {
 
       return { token, user };
     },
+
     addBook: async (parent, { bookTitle, bookAuthor, addedBy }, context) => {
       // console.log('hello resolver');
       if (context.user) {     
@@ -78,8 +79,8 @@ const resolvers = {
             $addToSet: {
               reviews: {
                 reviewText,
-                reviewsAuthor,
-                reviewRating: context.user.username,
+                reviewRating,
+                reviewsAuthor: context.user.username,
               },
             },
           },
@@ -95,7 +96,6 @@ const resolvers = {
       if (context.user) {
         const book = await Book.findOneAndDelete({
           _id: bookId,
-          addedBy: context.user.username,
         });
 
         await User.findOneAndUpdate(

@@ -5,7 +5,8 @@
     "reviews": [
       {
         "reviewText": "Enjoyed the characters and the messages in this story. Easy read. Very entertaining. Almost predictable. Recommend for a summer read",
-        "reviewRating": 4
+        "reviewRating": 4,
+        "reviewAuthor": "Dio"
       }
     ]
   },
@@ -15,7 +16,8 @@
     "reviews": [
       {
         "reviewText": "So well written. You will be invested every step of the way!",
-        "reviewRating": 5
+        "reviewRating": 5,
+        "reviewAuthor": "Dio"
       }
     ]
   },
@@ -25,7 +27,8 @@
     "reviews": [
       {
         "reviewText": "I am delighted to have this book I love her work",
-        "reviewRating": 4
+        "reviewRating": 4,
+        "reviewAuthor": "Dio"
       }
     ]
   },
@@ -35,7 +38,8 @@
     "reviews": [
       {
         "reviewText": "On the outside they were the golden family with the perfect life. On the inside they built the perfect lie",
-        "reviewRating": 5
+        "reviewRating": 5,
+        "reviewAuthor": "Dio"
       }
     ]
   }
