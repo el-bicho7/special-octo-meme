@@ -20,9 +20,9 @@ const typeDefs = `
   type Review {
     _id: ID
     reviewText: String
-    reviewAuthor: String
+    reviewAuthor: ID!
     createdAt: String
-    reviewRating: Float
+    reviewRating: Int
   }
 
   type Auth {
@@ -43,7 +43,7 @@ const typeDefs = `
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addBook(bookTitle: String!, bookAuthor: String!, addedBy:ID!): Book
-    addReview(bookID: ID!, reviewText: String!): Book
+    addReview(bookId: ID!, reviewText: String!, reviewRating: Int!, reviewAuthor:ID!): Book
     removeBook(bookId: ID!): Book
     removeReview(bookId: ID!, reviewId: ID!): Book
   }

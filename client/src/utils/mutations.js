@@ -29,24 +29,34 @@ export const ADD_BOOK = gql`
     addBook(bookTitle: $bookTitle, bookAuthor: $bookAuthor, addedBy: $addedBy) {
       bookTitle
       bookAuthor
-      createdAt 
+      createdAt
       addedBy
-    
     }
   }
 `;
 
 export const ADD_REVIEW = gql`
-  mutation addReview($bookId: ID!, $reviewText: String!) {
-    addReview(bookId: $bookId, reviewText: $reviewText) {
+  mutation addReview(
+    $bookId: ID!
+    $reviewText: String!
+    $reviewAuthor: ID!
+    $reviewRating: Int!
+  ) {
+    addReview(
+      bookId: $bookId
+      reviewText: $reviewText
+      reviewRating: $reviewRating
+      reviewAuthor: $reviewAuthor
+    ) {
       _id
-      bookText
+      bookTitle
       bookAuthor
       createdAt
       reviews {
         _id
         reviewText
         reviewRating
+        reviewAuthor
         createdAt
       }
     }

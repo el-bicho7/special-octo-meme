@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import ReviewList from "../components/ReviewList";
-import RevviewForm from "../components/ReviewForm";
+import ReviewForm from "../components/ReviewForm";
 
 import { QUERY_SINGLE_BOOK } from "../utils/queries";
 
@@ -42,10 +42,10 @@ const SingleBook = () => {
       </div>
 
       <div className="my-5">
-        <ReviewList comments={book.comments} />
+        <ReviewList reviews={book.reviews} />
       </div>
       <div className="m-3 p-4" style={{ border: "1px dotted #1a1a1a" }}>
-        <RevviewForm bookId={book._id} />
+        <ReviewForm bookId={book._id} />
       </div>
     </div>
   );
