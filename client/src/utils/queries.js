@@ -39,6 +39,7 @@ export const QUERY_SINGLE_BOOK = gql`
         _id
         reviewText
         reviewAuthor
+        reviewRating
         createdAt
       }
     }
