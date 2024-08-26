@@ -8,8 +8,8 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="text-light mb-4 py-3 flex-row align-center bg-error-content">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
+    <header className="text-light bg-neutral">
+      <div className="flex justify-between flex-row align-center px-2 py-2.5">
         <div>
         <h1 className="m-0">
           <Link className="text-light flex items-center" to="/">

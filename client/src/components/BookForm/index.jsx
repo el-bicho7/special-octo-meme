@@ -69,7 +69,7 @@ const BookForm = () => {
                 name="bookTitle"
                 placeholder="Book title"
                 value={bookTitle}
-                className="form-input w-100"
+                className="input input-bordered input-primary w-100"
                 style={{ lineHeight: "1.5", resize: "vertical" }}
                 onChange={handleChange}
               ></textarea>
@@ -77,7 +77,7 @@ const BookForm = () => {
                 type="text"
                 name="bookAuthor"
                 value={bookAuthor}
-                className="form-input w-100"
+                className="input input-bordered input-primary w-100"
                 style={{ lineHeight: "1.5", resize: "vertical" }}
                 placeholder="Author name"
                 onChange={handleChange}

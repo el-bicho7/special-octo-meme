@@ -7,12 +7,15 @@ export default function Nav() {
   return (
     <Navbar
       links={[
-        <Link key={1} className="nav-link text-light" to="/">
-          Home
+        <Link key={1} className="nav-link text-light" to="/user">
+            <i class="text-7xl material-icons">account_circle</i>
         </Link>,
-        <Link key={2} className="nav-link text-light" to="/login">
-          Login
+        <Link key={2} className="nav-link text-light" to="/books">
+          <i className="text-7xl material-icons">book</i>
         </Link>,
+        <Link key={2} className="nav-link text-light" to="/books">
+          <i className="text-7xl material-icons">search</i>
+        </Link>
       ]}
     />
   );
