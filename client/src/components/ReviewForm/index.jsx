@@ -73,7 +73,7 @@ const ReviewForm = ({ bookId }) => {
                 name="reviewText"
                 placeholder="Add your comment..."
                 value={reviewText}
-                className="form-input w-100"
+                className="input input-bordered input-primary w-100"
                 style={{ lineHeight: "1.5", resize: "vertical" }}
                 onChange={handleChange}
               ></textarea>

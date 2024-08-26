@@ -20,7 +20,7 @@ export default {
             //         error: '#e11d48',
             //     },
             // }, 
-            "cyberpunk",
+            "light", "cyberpunk", "aqua", "coffee"
         ],
     },
 };
