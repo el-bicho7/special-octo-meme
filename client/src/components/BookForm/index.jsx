@@ -48,49 +48,41 @@ const BookForm = () => {
   };
 
   return (
-    <div>
-      <h3>What book did you just read?</h3>
-
-      {Auth.loggedIn() ? (
+    <div className="card bg-base-300 m-5 w-1/2 shadow-xl">
+      <div className="card-body">
+        <h3 className="card-title">What book did you just read?</h3>
+        {Auth.loggedIn() ? (
         <>
-          <p
-            className={`m-0 ${
-              characterCount === 280 || error ? "text-danger" : ""
-            }`}
-          >
-            Character Count: {characterCount}/280
-          </p>
-          <form
-            className="flex-row justify-center justify-space-between-md align-center"
-            onSubmit={handleFormSubmit}
-          >
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="bookTitle"
-                placeholder="Book title"
-                value={bookTitle}
-                className="input input-bordered input-primary w-100"
-                style={{ lineHeight: "1.5", resize: "vertical" }}
-                onChange={handleChange}
-              ></textarea>
+          <form className="text-center"
+            onSubmit={handleFormSubmit}>
+              <div className="inputs flex">
+                <div className="m-2 w-1/2">
+                <textarea
+                  name="bookTitle"
+                  placeholder="Book title"
+                  className="input input-bordered input-primary"
+                  value={bookTitle}
+                  onChange={handleChange}>
+                </textarea>
+                <p className={`m-0 ${characterCount === 280 || error ? "bg-error" : ""}`}>
+                  Character Count: {characterCount}/280
+                </p>
+              </div>
               <input
                 type="text"
                 name="bookAuthor"
                 value={bookAuthor}
-                className="input input-bordered input-primary w-100"
-                style={{ lineHeight: "1.5", resize: "vertical" }}
+                className="input input-bordered input-primary m-2 w-1/2"
                 placeholder="Author name"
-                onChange={handleChange}
-              />
-            </div>
+                onChange={handleChange}/>
+              </div>
 
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+              <button className="btn btn-primary btn-block my-2" type="submit">
                 Add Book
               </button>
-            </div>
+
             {error && (
-              <div className="col-12 my-3 bg-danger text-white p-3">
+              <div className="col-12 my-3 bg-error text-white p-3">
                 {error.message}
               </div>
             )}
@@ -102,6 +94,7 @@ const BookForm = () => {
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
+      </div>
     </div>
   );
 };

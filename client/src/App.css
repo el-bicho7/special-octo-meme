@@ -394,10 +394,35 @@ button {
   min-height: 80vh;
 }
 
+.min-85-vh {
+  min-height: 85vh;
+}
+
 .min-100-vw {
   min-width: 100vw;
 }
 
 nav li i {
   color: oklch(var(--bc));
+}
+
+
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.new-amsterdam-regular {
+  font-family: "New Amsterdam", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1,h2,h3,h4,h5,h6,select,input,p,textarea {
+  color: oklch(var(--bc));
+}
+
+textarea {
+  width: 100%;
 }

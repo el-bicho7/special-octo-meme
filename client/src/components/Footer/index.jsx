@@ -1,4 +1,9 @@
-const themes = [ "aqua", "light", "cyberpunk", "coffee"];
+ const themes = [
+  { label: 'aqua 🌊', value: 'aqua'},
+  { label: 'coffee ☕', value: 'coffee'},
+  { label: 'cyberpunk 🤖🌃', value: 'cyberpunk' },
+  { label: 'light ⚡', value: 'light' }
+];
 // sessionStorage.setItem();
 
 const Footer = () => {
@@ -21,7 +26,7 @@ const Footer = () => {
         by the Whitebeard team.
       </h4>
       <select class="select select-bordered input-primary" onChange={(val) => updateTheme(val)}>
-        {themes.map(theme => (<option key={theme} value={theme}>{theme}</option>))}
+        {themes.map(theme => (<option key={theme} value={theme.value}>{theme.label}</option>))}
       </select>
     </footer>
   );
