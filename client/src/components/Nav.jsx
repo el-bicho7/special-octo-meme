@@ -7,7 +7,7 @@ export default function Nav() {
   return (
     <Navbar
       links={[
-        <Link key={1} className="nav-link text-light" to="/user">
+        <Link key={1} className="nav-link text-light" to="/me">
             <i class="text-7xl material-icons">account_circle</i>
         </Link>,
         <Link key={2} className="nav-link text-light" to="/books">

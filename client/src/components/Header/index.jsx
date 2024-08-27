@@ -11,10 +11,10 @@ const Header = () => {
     <header className="text-light bg-neutral">
       <div className="flex justify-between flex-row align-center px-2 py-2.5">
         <div>
-        <h1 className="m-0">
+        <h1 className="m-0 new-amsterdam-regular text-6xl">
           <Link className="text-light flex items-center" to="/">
-            <img className="rounded-lg mr-2" alt="logo" width="65" height="70" src="/logo.png"/>
-           Whitebeard Library
+            <img className="rounded-lg mr-4" alt="logo" width="65" height="70" src="/logo.png"/>
+            Whitebeard Library
           </Link>
           </h1>
           <p className="m-0"></p>
