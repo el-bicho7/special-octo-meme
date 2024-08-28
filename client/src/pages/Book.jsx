@@ -6,7 +6,7 @@ import BookForm from "../components/BookForm";
 // import { QUERY_BOOKS } from "../utils/queries";
 import { QUERY_BOOKS_USER } from "../utils/queries";
 
-const Home = () => {
+const BookPage = () => {
   const { loading, data } = useQuery(QUERY_BOOKS_USER);
   const books = data?.booksWithUser || [];
   // console.log('books',books);
@@ -33,4 +33,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default BookPage;
