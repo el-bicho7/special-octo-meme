@@ -16,7 +16,7 @@ const ReviewList = ({ reviews = [] }) => {
           reviews.map((review) => (
             <div key={review._id} className="col-12 mb-3 pb-3 p-8">
               <div className="p-3 bg-accent">
-                <h5 className="card-header text-sky-800">
+                <h5 className="card-header text-secondary">
                   {review.reviewAuthor} reviewed{" "}
                 </h5>
                 <span style={{ fontSize: "0.825rem" }}>

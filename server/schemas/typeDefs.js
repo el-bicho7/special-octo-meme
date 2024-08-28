@@ -15,6 +15,7 @@ const typeDefs = `
     addedBy: ID!
     userInfo: User
     reviews: [Review]!
+    averageRating: Float
   }
 
   type Review {
@@ -36,6 +37,7 @@ const typeDefs = `
     books(username: String): [Book]
     book(bookId: ID!): Book
     me: User
+    top5Rating: [Book]
     booksWithUser: [Book]
   }
 

@@ -61,6 +61,17 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const QUERY_BOOKS_RATING = gql`
+  query top5Rating {
+    top5Rating {
+      _id
+      bookTitle
+      bookAuthor
+      averageRating
+    }
+  }
+`;
+
 export const QUERY_BOOKS_USER = gql`
   query BooksWithUser {
     booksWithUser {
