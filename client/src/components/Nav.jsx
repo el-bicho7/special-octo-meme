@@ -11,7 +11,7 @@ export default function Nav() {
           <i className="text-7xl material-icons">home</i>
         </Link>,
         <Link key={2} className="nav-link text-light" to="/me">
-          <i class="text-7xl material-icons">account_circle</i>
+          <i className="text-7xl material-icons">account_circle</i>
         </Link>,
         <Link key={3} className="nav-link text-light" to="/books">
           <i className="text-7xl material-icons">book</i>

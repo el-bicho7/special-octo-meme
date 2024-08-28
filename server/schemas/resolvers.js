@@ -22,6 +22,18 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    top5Rating: async () => {
+      try {
+        const books = await Book.aggregate([
+          { $addFields: { averageRating: { $avg: "$reviews.reviewRating" } } },
+          { $sort: { averageRating: -1 } },
+          { $limit: 5 },
+        ]).exec();
+        return books;
+      } catch (err) {
+        console.log("Error fetching the Ratings", err);
+      }
+    },
     booksWithUser: async () => {
       try {
         return await Book.aggregate([
