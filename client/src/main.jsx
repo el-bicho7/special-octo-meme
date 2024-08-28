@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import SingleBook from "./pages/SingleBook";
 import Profile from "./pages/Profile";
 import ErrorPage from "./pages/ErrorPage";
+import AboutPage from "./pages/AboutUsPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/books/:bookId",
         element: <SingleBook />,
+      },
+      {
+        path: "/aboutus",
+        element: <AboutPage />,
       },
     ],
   },
