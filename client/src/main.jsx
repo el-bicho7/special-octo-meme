@@ -2,13 +2,14 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App.jsx";
-import Home from "./pages/Home";
+import Home from "./pages/Book.jsx";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import SingleBook from "./pages/SingleBook";
 import Profile from "./pages/Profile";
 import ErrorPage from "./pages/ErrorPage";
 import AboutPage from "./pages/AboutUsPage.jsx";
+import BookPage from "./pages/Book.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/aboutus",
         element: <AboutPage />,
+      },
+      {
+        path: "/books",
+        element: <BookPage />,
       },
     ],
   },
