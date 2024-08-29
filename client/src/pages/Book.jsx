@@ -8,8 +8,7 @@ import { QUERY_BOOKS } from "../utils/queries";
 
 const BookPage = () => {
   const { loading, data } = useQuery(QUERY_BOOKS);
-  const books = data?.booksWithUser || [];
-  console.log("books", books);
+  const books = data?.books || [];
 
   return (
     // Home Page must show best 3 ranked books

@@ -30,7 +30,9 @@ export const ADD_BOOK = gql`
       bookTitle
       bookAuthor
       createdAt
-      addedBy
+      addedBy {
+        username
+      }
     }
   }
 `;

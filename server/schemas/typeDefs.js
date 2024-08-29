@@ -13,7 +13,6 @@ const typeDefs = `
     bookAuthor: String
     createdAt: String
     addedBy: User
-    userInfo: User
     reviews: [Review]!
     averageRating: Float
   }
@@ -38,13 +37,12 @@ const typeDefs = `
     book(bookId: ID!): Book
     me: User
     top5Rating: [Book]
-    booksWithUser: [Book]
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addBook(bookTitle: String!, bookAuthor: String!): Book
+    addBook(bookTitle: String!, bookAuthor: String!, addedBy: ID!): Book
     addReview(bookId: ID!, reviewText: String!, reviewRating: Int!, reviewAuthor:ID!): Book
     removeBook(bookId: ID!): Book
     removeReview(bookId: ID!, reviewId: ID!): Book
