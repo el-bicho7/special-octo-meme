@@ -9,12 +9,11 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate("books");
     },
-    books: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Book.find(params).sort({ createdAt: -1 });
+    books: async (parent, args, context) => {
+      return Book.find().populate("addedBy").sort({ createdAt: -1 });
     },
     book: async (parent, { bookId }) => {
-      return Book.findOne({ _id: bookId });
+      return Book.findOne({ _id: bookId }).populate("addedBy");
     },
     me: async (parent, args, context) => {
       if (context.user) {

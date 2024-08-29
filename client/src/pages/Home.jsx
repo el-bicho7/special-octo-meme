@@ -8,7 +8,6 @@ const Home = () => {
   const { loading, data, error } = useQuery(QUERY_BOOKS_RATING);
 
   const top5Rating = data?.top5Rating || {};
-  console.log("info", top5Rating);
 
   if (loading) {
     return <div>Loading...</div>;
