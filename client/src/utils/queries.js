@@ -22,7 +22,9 @@ export const QUERY_BOOKS = gql`
       bookTitle
       bookAuthor
       createdAt
-      addedBy
+      addedBy {
+        username
+      }
     }
   }
 `;
@@ -34,7 +36,9 @@ export const QUERY_SINGLE_BOOK = gql`
       bookTitle
       bookAuthor
       createdAt
-      addedBy
+      addedBy {
+        username
+      }
       reviews {
         _id
         reviewText
