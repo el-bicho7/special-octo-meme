@@ -9,7 +9,7 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate("books");
     },
-    books: async (parent, args, context) => {
+    books: async () => {
       return Book.find().populate("addedBy").sort({ createdAt: -1 });
     },
     book: async (parent, { bookId }) => {
@@ -31,29 +31,6 @@ const resolvers = {
         return books;
       } catch (err) {
         console.log("Error fetching the Ratings", err);
-      }
-    },
-    booksWithUser: async () => {
-      try {
-        return await Book.aggregate([
-          {
-            $lookup: {
-              from: "users",
-              localField: "addedBy",
-              foreignField: "_id",
-              as: "userInfo",
-            },
-          },
-          {
-            $unwind: {
-              path: "$userInfo",
-              preserveNullAndEmptyArrays: false, // Opcional: Si no quieres eliminar documentos sin usuario
-            },
-          },
-        ]).exec();
-      } catch (error) {
-        console.error("Error fetching books with user info:", error);
-        throw new Error("Failed to fetch books with user info");
       }
     },
   },
@@ -83,7 +60,6 @@ const resolvers = {
     },
 
     addBook: async (parent, { bookTitle, bookAuthor, addedBy }, context) => {
-      // console.log('hello resolver');
       if (context.user) {
         try {
           const book = await Book.create({

@@ -83,9 +83,6 @@ export const QUERY_BOOKS_USER = gql`
       bookTitle
       bookAuthor
       createdAt
-      userInfo {
-        username
-      }
     }
   }
 `;

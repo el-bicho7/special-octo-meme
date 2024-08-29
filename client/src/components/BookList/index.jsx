@@ -21,7 +21,8 @@ const BookList = ({ books, title, showTitle = true, showUsername = true }) => {
                   </div>
                   <span style={{ fontSize: "1rem" }}>Book added by</span>
                   <div className="card-body bg-light p-2">
-                    <p>{book.userInfo.username}</p>
+                    <p>{}</p>
+                    <p>{book.addedBy ? book.addedBy.username : "Unknown"}</p>
                   </div>
                 </Link>
               ) : (
