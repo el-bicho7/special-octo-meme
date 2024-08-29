@@ -30,7 +30,7 @@ const Home = () => {
               to={`/books/${rating._id}`}
               className="card bg-secondary hover:underline"
             >
-              <div className="card-body items-center ">
+              <div className="card-body items-center">
                 <h2 className="card-title">{rating.bookTitle}</h2>
                 <p>Author: {rating.bookAuthor}</p>
                 <h3>Beards: {rating.averageRating}</h3>

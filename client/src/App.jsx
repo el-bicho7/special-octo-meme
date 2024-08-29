@@ -42,7 +42,7 @@ function App() {
         <Header />
       <div className="flex justify-start">
         <Nav />
-        <div className="container min-85-vh montserrat">
+        <div className="container min-85-vh montserrat mx-auto">
           <Outlet />
         </div>
       </div>

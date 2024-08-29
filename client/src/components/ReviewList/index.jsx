@@ -5,27 +5,28 @@ const ReviewList = ({ reviews = [] }) => {
 
   return (
     <>
-      <h3
-        className="p-5 display-inline-block"
-        style={{ borderBottom: "1px dotted #1a1a1a" }}
-      >
+      <h3 className="p-5 display-inline-block text-2xl"
+        style={{ borderBottom: "3px dotted #1a1a1a" }}>
         Reviews
       </h3>
       <div className="flex-row my-4">
         {reviews &&
           reviews.map((review) => (
-            <div key={review._id} className="col-12 mb-3 pb-3 p-8">
-              <div className="p-3 bg-accent">
-                <h5 className="card-header text-secondary">
-                  {review.reviewAuthor} reviewed{" "}
-                </h5>
-                <span style={{ fontSize: "0.825rem" }}>
+            <div key={review._id} className="col-12 mb-3 card bg-accent mx-7">
+              <div className="p-3 card-body">
+                <div className="card-title flex justify-between">
+                  <p className="text-secondary">
+                  👤 {review.reviewAuthor} reviewed{" "}
+                  </p>
+
+                  <div className="w-fit" >
+                    {Array.from(Array(review.reviewRating)).map(_ => <>⭐</>)}
+                  </div>
+                </div>
+                <span style={{ fontSize: "0.825rem", fontStyle: 'italic' }}>
                   on {review.createdAt}
                 </span>
-                <p className="card-body text-black">{review.reviewText}</p>
-                <span style={{ fontSize: "0.825rem" }}>
-                  rating: {review.reviewRating}
-                </span>
+                <p className="text-black m-2 ">{review.reviewText}</p>
               </div>
             </div>
           ))}

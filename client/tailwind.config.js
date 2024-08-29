@@ -9,7 +9,7 @@ export default {
         themes: [
             "aqua",
             "coffee",
-            "light",
+            "retro",
             {
                 cyberpunk: {
                     ...require("daisyui/src/theming/themes")["cyberpunk"],
