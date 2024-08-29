@@ -25,21 +25,16 @@ const SingleBook = () => {
   return (
     <>
       <div className="col-12 mb-3 pb-3 p-8">
-        <div className="p-3 bg-secondary">
-          <h3 className="card-header bg-dark text-primary p-2 m-0">
-            Title: {book.bookTitle}
-          </h3>
-          <Link
-            to={`/profiles/${book._id}`}
-            className="card bg-secondary hover:underline"
-          >
-            <h4>{book.addedBy.username}</h4>
-          </Link>
+        <div className="p-3  mt-4">
+          <h2 className="col-12 col-md-10 text-4xl mb-2 inline-block"> {book.bookTitle}</h2>
+          <p>
+          Added by <Link to={`/profiles/${book._id}`} className="link link-primary"> {book.addedBy.username}</Link>
+          </p>
         </div>
         <div className="my-5">
           <ReviewList reviews={book.reviews} />
         </div>
-        <div className="m-3 p-4" style={{ border: "1px dotted #1a1a1a" }}>
+        <div className="m-3 p-4" style={{ borderTop: "3px dotted #1a1a1a" }}>
           <ReviewForm bookId={book._id} />
         </div>
       </div>

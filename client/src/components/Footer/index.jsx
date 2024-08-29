@@ -1,8 +1,8 @@
  const themes = [
+   { label: 'retro 📺', value: 'retro' },
   { label: 'aqua 🌊', value: 'aqua'},
   { label: 'coffee ☕', value: 'coffee'},
-  { label: 'cyberpunk 🤖🌃', value: 'cyberpunk' },
-  { label: 'light ⚡', value: 'light' }
+  { label: 'cyberpunk 🤖🌃', value: 'cyberpunk' }
 ];
 // sessionStorage.setItem();
 
@@ -13,7 +13,7 @@ const Footer = () => {
 
   return (
     <footer className="w-100 bg-neutral p-2 flex justify-between items-center">
-      <h4>
+      <h4 className="text-primary">
         Made with{' '}
         <span
           className="emoji"
