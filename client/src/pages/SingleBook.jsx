@@ -16,8 +16,8 @@ const SingleBook = () => {
     // pass URL parameter
     variables: { bookId: bookId },
   });
+  console.log("data", data);
   const book = data?.book || {};
-  console.log("data", book);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -26,9 +26,19 @@ const SingleBook = () => {
     <>
       <div className="col-12 mb-3 pb-3 p-8">
         <div className="p-3  mt-4">
-          <h2 className="col-12 col-md-10 text-4xl mb-2 inline-block"> {book.bookTitle}</h2>
+          <h2 className="col-12 col-md-10 text-4xl mb-2 inline-block">
+            {" "}
+            {book.bookTitle}
+          </h2>
           <p>
-          Added by <Link to={`/profiles/${book._id}`} className="link link-primary"> {book.addedBy.username}</Link>
+            Added by{" "}
+            <Link
+              to={`/profiles/${book.addedBy._id}`}
+              className="link link-primary"
+            >
+              {" "}
+              {book.addedBy.username}
+            </Link>
           </p>
         </div>
         <div className="my-5">

@@ -9,15 +9,17 @@ import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 
 const Profile = () => {
-  const { username: userParam } = useParams();
-
-  const { loading, data, error } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam },
+  const { userID } = useParams();
+  console.log(userID);
+  const { loading, data, error } = useQuery(userID ? QUERY_USER : QUERY_ME, {
+    variables: { _id: userID },
   });
-  console.log(data);
+  console.log("auth", Auth.getProfile().data._id);
+  console.log("data", data);
+
   const user = data?.me || data?.user || {};
   // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  if (Auth.loggedIn() && Auth.getProfile().data._id === userID) {
     return <Navigate to="/me" />;
   }
 
@@ -43,13 +45,13 @@ const Profile = () => {
     <div>
       <div className="flex-row justify-center mb-3">
         <h2 className="col-12 col-md-10 mt-4 text-4xl">
-         Your Profile
+          {user.username} Profile
         </h2>
-          {!userParam && (
-            <div className="col-12 col-md-10 mb-3 p-3">
-              <BookForm />
-            </div>
-          )}
+        {!userID && (
+          <div className="col-12 col-md-10 mb-3 p-3">
+            <BookForm />
+          </div>
+        )}
         <h4 className="text-3xl my-2">Your books</h4>
         <div className="col-12 col-md-10 mb-5">
           <BookList

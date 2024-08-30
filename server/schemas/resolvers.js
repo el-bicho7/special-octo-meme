@@ -6,8 +6,8 @@ const resolvers = {
     users: async () => {
       return User.find().populate("books");
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("books");
+    user: async (parent, { _id }) => {
+      return User.findOne({ _id }).populate("books");
     },
     books: async () => {
       return Book.find().populate("addedBy").sort({ createdAt: -1 });
