@@ -32,7 +32,7 @@ const typeDefs = `
 
   type Query {
     users: [User]
-    user(username: String!): User
+    user(_id: ID!): User
     books(username: String): [Book]
     book(bookId: ID!): Book
     me: User
