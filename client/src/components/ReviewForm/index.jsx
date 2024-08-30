@@ -9,7 +9,7 @@ import { QUERY_BOOKS_USER, QUERY_SINGLE_BOOK } from "../../utils/queries";
 
 const ReviewForm = ({ bookId }) => {
   const [reviewText, setReviewText] = useState("");
-  const [reviewRating, setReviewRating] = useState("");
+  const [reviewRating, setReviewRating] = useState(0);
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addReview, { error }] = useMutation(ADD_REVIEW, {
