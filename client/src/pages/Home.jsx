@@ -5,7 +5,9 @@ import { QUERY_BOOKS_RATING } from "../utils/queries";
 
 const Home = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
-  const { loading, data, error } = useQuery(QUERY_BOOKS_RATING);
+  const { loading, data, error } = useQuery(QUERY_BOOKS_RATING, {
+    pollInterval: 100,
+  });
 
   const top5Rating = data?.top5Rating || {};
 
