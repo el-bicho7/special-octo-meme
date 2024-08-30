@@ -5,13 +5,20 @@ import { useMutation } from "@apollo/client";
 import { ADD_REVIEW } from "../../utils/mutations";
 
 import Auth from "../../utils/auth";
+import { QUERY_BOOKS_USER, QUERY_SINGLE_BOOK } from "../../utils/queries";
 
 const ReviewForm = ({ bookId }) => {
   const [reviewText, setReviewText] = useState("");
   const [reviewRating, setReviewRating] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addReview, { error }] = useMutation(ADD_REVIEW);
+  const [addReview, { error }] = useMutation(ADD_REVIEW, {
+    refetchQueries: [
+      {
+        query: QUERY_SINGLE_BOOK,
+      },
+    ],
+  });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -56,8 +63,7 @@ const ReviewForm = ({ bookId }) => {
         <h4 className="card-title">What are your reviews on this book?</h4>
         {Auth.loggedIn() ? (
           <>
-            <form
-              onSubmit={handleFormSubmit}>
+            <form onSubmit={handleFormSubmit}>
               <div className="m-2">
                 <textarea
                   name="reviewText"
@@ -68,11 +74,15 @@ const ReviewForm = ({ bookId }) => {
                   style={{ lineHeight: "1.5", resize: "vertical" }}
                   onChange={handleChange}
                 ></textarea>
-                <p style={{ fontSize: "0.825rem", fontStyle: 'italic' }}
-                  className={`m-0 ${characterCount === 280 || error ? "bg-error" : ""}`}>
+                <p
+                  style={{ fontSize: "0.825rem", fontStyle: "italic" }}
+                  className={`m-0 ${
+                    characterCount === 280 || error ? "bg-error" : ""
+                  }`}
+                >
                   Character Count: {characterCount}/280
                   {error && <span className="ml-2">{error.message}</span>}
-                </p>                
+                </p>
               </div>
 
               <div className="m-2">
@@ -80,8 +90,11 @@ const ReviewForm = ({ bookId }) => {
                   name="reviewRating"
                   className="select select-primary w-full max-w-xs"
                   value={reviewRating}
-                  onChange={handleRating}>
-                  <option selected disabled value="">Select Rating</option>
+                  onChange={handleRating}
+                >
+                  <option selected disabled value="">
+                    Select Rating
+                  </option>
                   <option value={1}>⭐</option>
                   <option value={2}>⭐⭐</option>
                   <option value={3}>⭐⭐⭐</option>
@@ -91,7 +104,10 @@ const ReviewForm = ({ bookId }) => {
               </div>
 
               <div className="col-12 col-lg-3">
-                <button className="btn btn-primary btn-block py-3" type="submit">
+                <button
+                  className="btn btn-primary btn-block py-3"
+                  type="submit"
+                >
                   Add Comment
                 </button>
               </div>
