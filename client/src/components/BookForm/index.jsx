@@ -14,7 +14,14 @@ const BookForm = () => {
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addBook, { error }] = useMutation(ADD_BOOK, {
-    refetchQueries: [QUERY_BOOKS, "getBooks", QUERY_ME, "me"],
+    refetchQueries: [
+      {
+        query: QUERY_BOOKS,
+      },
+      {
+        query: QUERY_ME,
+      },
+    ],
   });
 
   const handleFormSubmit = async (event) => {
@@ -56,25 +63,30 @@ const BookForm = () => {
             <form className="text-center" onSubmit={handleFormSubmit}>
               <div className="inputs flex">
                 <div className="m-2 w-1/2">
-                <textarea
-                  name="bookTitle"
-                  placeholder="Book title"
-                  className="input input-bordered input-primary"
-                  value={bookTitle}
-                  onChange={handleChange}>
-                </textarea>
-                <p style={{ fontSize: "0.825rem", fontStyle: 'italic' }}
-                  className={`m-0  ${characterCount === 280 || error ? "bg-error" : ""}`}>
-                  Character Count: {characterCount}/280
-                </p>
-              </div>
-              <input
-                type="text"
-                name="bookAuthor"
-                value={bookAuthor}
-                className="input input-bordered input-primary m-2 w-1/2"
-                placeholder="Author name"
-                onChange={handleChange}/>
+                  <textarea
+                    name="bookTitle"
+                    placeholder="Book title"
+                    className="input input-bordered input-primary"
+                    value={bookTitle}
+                    onChange={handleChange}
+                  ></textarea>
+                  <p
+                    style={{ fontSize: "0.825rem", fontStyle: "italic" }}
+                    className={`m-0  ${
+                      characterCount === 280 || error ? "bg-error" : ""
+                    }`}
+                  >
+                    Character Count: {characterCount}/280
+                  </p>
+                </div>
+                <input
+                  type="text"
+                  name="bookAuthor"
+                  value={bookAuthor}
+                  className="input input-bordered input-primary m-2 w-1/2"
+                  placeholder="Author name"
+                  onChange={handleChange}
+                />
               </div>
 
               <button className="btn btn-primary btn-block my-2" type="submit">
