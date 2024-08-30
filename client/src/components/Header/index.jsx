@@ -9,17 +9,15 @@ const Header = () => {
   };
   return (
     <header className="text-light bg-neutral">
-      <div className="flex justify-between flex-row align-center px-2 py-2.5">
-        <div>
-        <h1 className="m-0 new-amsterdam-regular text-6xl text-primary">
+      <div className="flex px-2 py-2.5">
+        <h1 className="m-auto new-amsterdam-regular text-6xl text-primary p">
           <Link className="text-light flex items-center" to="/">
-            <img className="rounded-lg mr-4" alt="logo" width="65" height="70" src="/logo.png"/>
+            <img className="rounded-lg mr-4" alt="logo" width="65" height="70" src="/logo.png" />
             Whitebeard Library
           </Link>
-          </h1>
-          <p className="m-0"></p>
-        </div>
-        <div>
+        </h1>
+        <p className="m-0"></p>
+        <div className="absolute right-2">
           {Auth.loggedIn() ? (
             <button className="btn btn-lg btn-light m-2" onClick={logout}>
               Logout
