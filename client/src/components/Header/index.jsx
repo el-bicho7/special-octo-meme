@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-
 import Auth from "../../utils/auth";
+
+import wbLogo from '../../assets/logo.png'
 
 const Header = () => {
   const logout = (event) => {
@@ -12,7 +13,7 @@ const Header = () => {
       <div className="flex px-2 py-2.5">
         <h1 className="m-auto new-amsterdam-regular text-6xl text-primary p">
           <Link className="text-light flex items-center" to="/">
-            <img className="rounded-lg mr-4" alt="logo" width="65" height="70" src="/logo.png" />
+            <img className="rounded-lg mr-4" alt="logo" width="65" height="70" src={wbLogo} />
             Whitebeard Library
           </Link>
         </h1>
