@@ -9,60 +9,59 @@ import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 
 const Profile = () => {
-  const { userID } = useParams();
-  console.log(userID);
-  const { loading, data, error } = useQuery(userID ? QUERY_USER : QUERY_ME, {
-    variables: { _id: userID },
-  });
-  console.log("auth", Auth.getProfile().data._id);
-  console.log("data", data);
+  if (Auth.loggedIn) {
+    console.log(Auth.loggedIn());
+    const { userID } = useParams();
 
-  const user = data?.me || data?.user || {};
-  // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data._id === userID) {
-    return <Navigate to="/me" />;
-  }
+    const { loading, data, error } = useQuery(userID ? QUERY_USER : QUERY_ME, {
+      variables: { _id: userID },
+    });
 
-  if (error) {
-    console.log("Graphql error", error);
-  }
+    const user = data?.me || data?.user || {};
+    // navigate to personal profile page if username is yours
+    if (Auth.loggedIn() && Auth.getProfile().data._id === userID) {
+      return <Navigate to="/me" />;
+    }
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    if (error) {
+      console.log("Graphql error", error);
+    }
 
-  if (!user?.username) {
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+
     return (
-      <h4>
-        You need to be logged in to see this. Use the navigation links above to
-        sign up or log in!
-      </h4>
+      // The User must show my uploaded books, add books, erase a book, modify book
+      <div>
+        <div className="flex-row justify-center mb-3">
+          <h2 className="col-12 col-md-10 mt-4 text-4xl">
+            {user.username} Profile
+          </h2>
+          {!userID && (
+            <div className="col-12 col-md-10 mb-3 p-3">
+              <BookForm />
+            </div>
+          )}
+          <h4 className="text-3xl my-2">Your books</h4>
+          <div className="col-12 col-md-10 mb-5">
+            <BookList
+              books={user.books}
+              title={`${user.username}'s books...`}
+              showTitle={false}
+              showUsername={false}
+            />
+          </div>
+        </div>
+      </div>
     );
   }
 
   return (
-    // The User must show my uploaded books, add books, erase a book, modify book
-    <div>
-      <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 mt-4 text-4xl">
-          {user.username} Profile
-        </h2>
-        {!userID && (
-          <div className="col-12 col-md-10 mb-3 p-3">
-            <BookForm />
-          </div>
-        )}
-        <h4 className="text-3xl my-2">Your books</h4>
-        <div className="col-12 col-md-10 mb-5">
-          <BookList
-            books={user.books}
-            title={`${user.username}'s books...`}
-            showTitle={false}
-            showUsername={false}
-          />
-        </div>
-      </div>
-    </div>
+    <h4>
+      You need to be logged in to see this. Use the navigation links above to
+      sign up or log in!
+    </h4>
   );
 };
 

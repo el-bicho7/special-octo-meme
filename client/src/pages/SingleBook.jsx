@@ -16,7 +16,7 @@ const SingleBook = () => {
     // pass URL parameter
     variables: { bookId: bookId },
   });
-  console.log("data", data);
+
   const book = data?.book || {};
 
   if (loading) {

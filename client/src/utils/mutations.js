@@ -64,3 +64,11 @@ export const ADD_REVIEW = gql`
     }
   }
 `;
+
+export const REMOVE_BOOK = gql`
+  mutation removeBook($bookId: ID!) {
+    removeBook(bookID: $bookID) {
+      _id
+    }
+  }
+`;
