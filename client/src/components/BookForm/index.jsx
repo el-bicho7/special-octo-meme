@@ -15,12 +15,8 @@ const BookForm = () => {
 
   const [addBook, { error }] = useMutation(ADD_BOOK, {
     refetchQueries: [
-      {
-        query: QUERY_BOOKS,
-      },
-      {
-        query: QUERY_ME,
-      },
+      { query: QUERY_BOOKS},
+      { query: QUERY_ME},
     ],
   });
 

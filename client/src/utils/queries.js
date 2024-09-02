@@ -9,6 +9,7 @@ export const QUERY_USER = gql`
       books {
         _id
         bookTitle
+        bookAuthor
         createdAt
       }
     }
@@ -60,6 +61,7 @@ export const QUERY_ME = gql`
       books {
         _id
         bookTitle
+        bookAuthor
         createdAt
       }
     }

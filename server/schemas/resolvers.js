@@ -107,6 +107,8 @@ const resolvers = {
       throw AuthenticationError;
     },
     removeBook: async (parent, { bookId }, context) => {
+      console.log('Hello remove book');
+      console.log(bookId);
       if (context.user) {
         const book = await Book.findOneAndDelete({
           _id: bookId,

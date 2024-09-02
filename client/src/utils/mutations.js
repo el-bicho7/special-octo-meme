@@ -67,7 +67,7 @@ export const ADD_REVIEW = gql`
 
 export const REMOVE_BOOK = gql`
   mutation removeBook($bookId: ID!) {
-    removeBook(bookID: $bookID) {
+    removeBook(bookId: $bookId) {
       _id
     }
   }
