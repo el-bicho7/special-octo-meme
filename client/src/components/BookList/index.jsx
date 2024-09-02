@@ -26,7 +26,7 @@ const BookList = ({ books, title, showTitle = true, showUsername = true, deleteB
     }
   };
 
-  if (!books.length) {
+  if (!books?.length) {
     return <h3>No Books Yet</h3>;
   }
 
