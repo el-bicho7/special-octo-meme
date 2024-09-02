@@ -15,7 +15,7 @@ const Home = () => {
     return <div>Loading...</div>;
   }
   return (
-    <>
+    <div className="m-5 mt-0">
       <div className="flex-col p-8 items-center">
         <h1>Welcome to the Whitebeard Library!</h1>
 
@@ -40,7 +40,7 @@ const Home = () => {
             </Link>
           ))}
       </div>
-    </>
+    </div>
   );
 };
 
