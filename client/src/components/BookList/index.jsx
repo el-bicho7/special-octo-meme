@@ -26,30 +26,26 @@ const BookList = ({ books, title, showTitle = true, showUsername = true, deleteB
     }
   };
 
-  if (!books.length) {
+  if (!books?.length) {
     return <h3>No Books Yet</h3>;
   }
 
   return (
-    <div  className="flex flex-wrap gap-4">
-      {showTitle && <h3 className="w-full">{title}</h3>}
-      {books &&
-        books.map((book) => (
-          <div
-            key={book._id}
-            className="card mb-3 bg-base-300 w-full md:w-1/2 lg:w-1/3 shadow-xl border-book-left color-base-content"
-          >
-            <div className="card-body p-2 m-0 h-58">
+    <div className="container mx-auto">
+      {showTitle && <h3 className="text-2xl">{title}</h3>}
+      <div className="flex">
+      {books?.map((book) => (
+          <div key={book._id} className="card m-3 p-2 bg-base-300 w-1/4 shadow-xl border-book-left color-base-content">
+            <div className="card-body p-2 m-0 min-h-32">
               {showUsername ? (
                 <Link className="text-light" to={`/books/${book._id}`}>
                   <h5 class="card-title">{book.bookTitle}</h5>
-                  <span style={{ fontSize: "1rem" }}>Author</span>
-                  <div className="bg-light p-2">
-                    <p>{book.bookAuth}</p>
+                  <div className="italic p-2 mt-4">
+                  <span style={{ fontSize: "0.8rem" }}>By </span> {book.bookAuthor}
                   </div>
-                  <span style={{ fontSize: "1rem" }}>Book added by</span>
-                  <div className="bg-light p-2">
-                    <p>{book?.addedBy ? book?.addedBy?.username : "unknown"}</p>
+                  <div className="italic p-2">
+                  <span style={{ fontSize: "0.8rem" }}>Added by </span>
+                  {book?.addedBy ? book?.addedBy?.username : 'unknown'}
                   </div>
                 </Link>
               ) : (
@@ -80,6 +76,7 @@ const BookList = ({ books, title, showTitle = true, showUsername = true, deleteB
             </div>
           </div>
         ))}
+        </div>
     </div>
   );
 };

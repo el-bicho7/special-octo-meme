@@ -14,17 +14,14 @@ const BookPage = () => {
     // Home Page must show best 3 ranked books
     <main>
       <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: "1px dotted #1a1a1a" }}
-        >
+        <div>
           <BookForm />
         </div>
-        <div className="col-12 col-md-8 mb-3">
+        <div className="mx-10 my-2">
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <BookList books={books} title="Book(s) at library..." />
+            <BookList books={books} title="Books at library..." />
           )}
         </div>
       </div>

@@ -51,7 +51,7 @@ const BookForm = () => {
   };
 
   return (
-    <div className="card bg-base-300 m-5 w-1/2 shadow-xl">
+    <div className="card bg-base-300 my-5 mx-auto flex w-1/2 shadow-xl">
       <div className="card-body">
         <h3 className="card-title">What book did you just read?</h3>
         {Auth.loggedIn() ? (
